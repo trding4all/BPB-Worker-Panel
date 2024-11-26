@@ -11,7 +11,7 @@ let userID = '89b3cbba-e6ac-485a-9481-976a0415eab9';
 
 // https://www.nslookup.io/domains/cdn.xn--b6gac.eu.org/dns-records/
 // https://www.nslookup.io/domains/cdn-all.xn--b6gac.eu.org/dns-records/
-const proxyIPs= ['cdn.xn--b6gac.eu.org', 'cdn-all.xn--b6gac.eu.org', 'edgetunnel.anycast.eu.org'];
+const proxyIPs= ['bpb.yousef.isegaro.com'];
 
 const defaultHttpPorts = ['80', '8080', '2052', '2082', '2086', '2095', '8880'];
 const defaultHttpsPorts = ['443', '8443', '2053', '2083', '2087', '2096'];
@@ -804,7 +804,7 @@ const getNormalConfigs = async (env, hostName, client) => {
                 defaultHttpsPorts.includes(port) 
                     ? `&security=tls&sni=${
                         randomUpperCase(hostName)
-                    }&fp=randomized&alpn=${
+                    }&fp=firefox&alpn=${
                         client === 'singbox' ? 'http/1.1' : 'h2,http/1.1'
                     }`
                     : ''}&path=${`/${getRandomPath(16)}${proxyIP ? `/${btoa(proxyIP)}` : ''}`}${
@@ -3076,7 +3076,7 @@ const singboxOutboundTemp = {
         server_name: "",
         utls: {
             enabled: true,
-            fingerprint: "randomized"
+            fingerprint: "firefox"
         }
     },
     transport: {
